@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useMangasQuery } from '../features/mangasApi';
 import { FaCartPlus } from 'react-icons/fa';
 
 function Home() {
   const { data } = useMangasQuery();
   const [search, setSearch] = useState('')
+  const [sortData, setSortData] = useState('')
+
+  const mangas = sortData == 'low'? data && data.slice().sort((a,b) => a.price - b.price) :
+                 sortData == 'high'? data && data.slice().sort((a,b)=> b.price - a.price) :
+                 sortData == 'a-z'? data && data.slice().sort((a,b)=> a.title > b.title ? 1:-1) :
+                 sortData == 'z-a'? data && data.slice().sort((a,b)=> b.title > a.title ? 1:-1) :
+                 sortData == 'default'? data : data
+
+  const handleChange = (e: React.ChangeEvent<HTMLElement>) =>{
+    setSortData(e.target.id)
+  }
   return (
     <div className='container-lg py-4'>
 
@@ -15,40 +26,40 @@ function Home() {
           <li className="dropdown-item">
             <div className="form-check">
               <label htmlFor="default" className="form-check-label">Default</label>
-              <input type="radio" id="default" name="sort" className="form-check-input" />
+              <input type="radio" id="default" name="sort" value={sortData} onChange={handleChange} className="form-check-input" />
             </div>
           </li>
           <hr className="dropdown-divider" />
           <li className="dropdown-item">
             <div className="form-check">
               <label htmlFor="low" className="form-check-label">Price (Lowest)</label>
-              <input type="radio" id="low" name="sort" className="form-check-input" />
+              <input type="radio" id="low" name="sort" value={sortData} onChange={handleChange} className="form-check-input" />
             </div>
           </li>
           <li className="dropdown-item">
             <div className="form-check">
               <label htmlFor="high" className="form-check-label">Price (Highest)</label>
-              <input type="radio" id="high" name="sort" className="form-check-input" />
+              <input type="radio" id="high" name="sort" value={sortData} onChange={handleChange} className="form-check-input" />
             </div>
           </li>
           <li className="dropdown-item">
             <div className="form-check">
               <label htmlFor="a-z" className="form-check-label">A-Z</label>
-              <input type="radio" id="a-z" name="sort" className="form-check-input" />
+              <input type="radio" id="a-z" name="sort" value={sortData} onChange={handleChange} className="form-check-input" />
             </div>
           </li>
           <li className="dropdown-item">
             <div className="form-check">
               <label htmlFor="z-a" className="form-check-label">Z-A</label>
-              <input type="radio" id="z-a" name="sort" className="form-check-input" />
+              <input type="radio" id="z-a" name="sort" value={sortData} onChange={handleChange} className="form-check-input" />
             </div>
           </li>
         </ul>
       </div>
   
       <div className='row'>
-        {data &&
-          data.filter((items)=>{
+        {mangas &&
+          mangas.filter((items)=>{
             return search.toLocaleLowerCase() == '' ? items : items.title.toLocaleLowerCase().includes(search)
           }).map((manga) => (
             <div key={manga.id} className='col-md-6 col-lg-4 text-center'>
