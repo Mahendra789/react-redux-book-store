@@ -20,9 +20,9 @@
 
   - On clicking the "Purchase" button:
 
-        - A popup appears saying "Thanks for your purchase!".
-        - If the cart is empty, a message "Cart is empty" is shown, and the user is redirected to the product listing page.
+    - A popup appears saying "Thanks for your purchase!".
+    - If the cart is empty, a message "Cart is empty" is shown, and the user is redirected to the product listing page.
 
-        ### Live demo:
+### Live demo:
 
-    [![Open in StackBlitz](https://stackblitz.com/github/Mahendra789/react-redux-book-store)]
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Mahendra789/react-redux-book-store)
