@@ -5,9 +5,9 @@
 
 ### Run the Project:
 
-1. Run npm i to install all dependencies.
-2. Start the JSON server to load data using npm run json-server.
-3. Launch the project with npm run dev.
+1. Run `npm i` to install all dependencies.
+2. Start the JSON server to load data using npm run `json-server`.
+3. Launch the project with `npm run dev`.
 
 ### Features:
 
