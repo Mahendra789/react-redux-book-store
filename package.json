@@ -1,14 +1,14 @@
 {
   "name": "mern",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "our-json": "json-server --watch data/manga.json --port 8000"
+    "json-server": "json-server --watch data/book.json --port 8000"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
@@ -19,7 +19,9 @@
     "react-dom": "^18.3.1",
     "react-icons": "^5.4.0",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^7.1.1"
+    "react-router-dom": "^7.1.1",
+    "react-toastify": "^11.0.2",
+    "toastify": "^2.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
